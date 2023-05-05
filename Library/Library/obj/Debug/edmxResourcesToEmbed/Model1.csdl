@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin_">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="Int32" Nullable="false" />
+    <Property Name="Admin_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Admin_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="ID_Author" />
+    </Key>
+    <Property Name="ID_Author" Type="Int32" Nullable="false" />
+    <Property Name="Au_Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Au_Name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Au_Patronymic" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Books" Relationship="Self.FK_Books_Authors" FromRole="Authors" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="ID_Publication" />
+    </Key>
+    <Property Name="ID_Publication" Type="Int32" Nullable="false" />
+    <Property Name="Name_Publication" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Author" Type="Int32" />
+    <Property Name="Сategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Publisher" Type="Int32" />
+    <Property Name="Date_Release" Type="DateTime" Precision="0" />
+    <Property Name="Circulation" Type="Int32" />
+    <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UDC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Delivery" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_Books_Authors" FromRole="Books" ToRole="Authors" />
+    <NavigationProperty Name="Publisher" Relationship="Self.FK_Books_Publisher" FromRole="Books" ToRole="Publisher" />
+    <NavigationProperty Name="Extradition" Relationship="Self.FK_Extradition_Books" FromRole="Books" ToRole="Extradition" />
+  </EntityType>
+  <EntityType Name="Extradition">
+    <Key>
+      <PropertyRef Name="ID_Extradition" />
+    </Key>
+    <Property Name="ID_Extradition" Type="Int32" Nullable="false" />
+    <Property Name="Login_Readers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Publication" Type="Int32" />
+    <Property Name="Date_Issue" Type="DateTime" Precision="0" />
+    <Property Name="Date_Delivery" Type="DateTime" Precision="0" />
+    <Property Name="Date_Return" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Books" Relationship="Self.FK_Extradition_Books" FromRole="Extradition" ToRole="Books" />
+    <NavigationProperty Name="Readers" Relationship="Self.FK_Extradition_Readers" FromRole="Extradition" ToRole="Readers" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="ID_Publisher" />
+    </Key>
+    <Property Name="ID_Publisher" Type="Int32" Nullable="false" />
+    <Property Name="Name_Publisher" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Books" Relationship="Self.FK_Books_Publisher" FromRole="Publisher" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Readers">
+    <Key>
+      <PropertyRef Name="Reader_Login" />
+    </Key>
+    <Property Name="Reader_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Reader_Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="ID_Reader" Type="Int32" />
+    <NavigationProperty Name="Extradition" Relationship="Self.FK_Extradition_Readers" FromRole="Readers" ToRole="Extradition" />
+    <Property Name="Admin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Books_Authors">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="ID_Author" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="ID_Author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Books_Publisher">
+    <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="ID_Publisher" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="ID_Publisher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Extradition_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+    <End Role="Extradition" Type="Self.Extradition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="ID_Publication" />
+      </Principal>
+      <Dependent Role="Extradition">
+        <PropertyRef Name="ID_Publication" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Extradition_Readers">
+    <End Role="Readers" Type="Self.Readers" Multiplicity="0..1" />
+    <End Role="Extradition" Type="Self.Extradition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Readers">
+        <PropertyRef Name="Reader_Login" />
+      </Principal>
+      <Dependent Role="Extradition">
+        <PropertyRef Name="Login_Readers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin_" EntityType="Self.Admin_" />
+    <EntitySet Name="Authors" EntityType="Self.Authors" />
+    <EntitySet Name="Books" EntityType="Self.Books" />
+    <EntitySet Name="Extradition" EntityType="Self.Extradition" />
+    <EntitySet Name="Publisher" EntityType="Self.Publisher" />
+    <EntitySet Name="Readers" EntityType="Self.Readers" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Books_Authors" Association="Self.FK_Books_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Books_Publisher" Association="Self.FK_Books_Publisher">
+      <End Role="Publisher" EntitySet="Publisher" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Extradition_Books" Association="Self.FK_Extradition_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Extradition" EntitySet="Extradition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Extradition_Readers" Association="Self.FK_Extradition_Readers">
+      <End Role="Readers" EntitySet="Readers" />
+      <End Role="Extradition" EntitySet="Extradition" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

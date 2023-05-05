@@ -1,0 +1,58 @@
+﻿<Page x:Class="Library.PageBookEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Library"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageBookEdit">
+
+    <Grid Background="AntiqueWhite" Margin="0,0,-182,-249">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
+
+        </Grid.RowDefinitions>
+        <TextBlock  Text="Номер публикации" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Название публикации" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"></TextBlock>
+        <TextBlock Text="Номер автора" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Жанр" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Номер издательства" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"></TextBlock>
+        <TextBlock Text="Дата публикации" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5"></TextBlock>
+        <TextBlock Text="Тираж" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"></TextBlock>
+        <TextBlock Text="ISBN" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7"></TextBlock>
+        <TextBlock Text="УДС" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="8"></TextBlock>
+        <TextBlock Text="Расположение" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="9"></TextBlock>
+        <TextBlock Text="Дта поступления" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="10"></TextBlock>
+        <TextBlock Text="Количество" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="11"></TextBlock>
+        <TextBox x:Name="TB_ID_Publication" Text="{Binding ID_Publication}" Grid.Column="1" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding Name_Publication}" MaxLength="100" Grid.Column="1" Grid.Row="1" Width="600" Height="20"></TextBox>
+        <ComboBox  SelectedItem="{Binding Authors}" Grid.Column="1" Grid.Row="2" Height="20" Width="600" x:Name="ComBoxAuthor" DisplayMemberPath="ID_Author"></ComboBox>
+        <TextBox Text="{Binding Сategory}" MaxLength="20" Grid.Column="1" Grid.Row="3" Width="600" Height="20"></TextBox>
+        <ComboBox  SelectedItem="{Binding Publisher}" Grid.Column="1" Grid.Row="4" Height="20" Width="600" x:Name="ComBoxPublisher" DisplayMemberPath="ID_Publisher"></ComboBox>
+        <TextBox Text="{Binding Date_Release}" Grid.Column="1" Grid.Row="5" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding Circulation}" Grid.Column="1" Grid.Row="6" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding ISBN}" MaxLength="50" Grid.Column="1" Grid.Row="7" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding UDC}" MaxLength="15" Grid.Column="1" Grid.Row="8" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding Location}" MaxLength="20" Grid.Column="1" Grid.Row="9" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding Date_Delivery}" Grid.Column="1" Grid.Row="10" Width="600" Height="20"></TextBox>
+        <TextBox Text="{Binding Quantity}" Grid.Column="1" Grid.Row="11" Width="600" Height="20"></TextBox>
+        <Button Grid.Column="1" Grid.Row="12" Margin="20, 20, 20, 0 " Width="300" Height="40" Content="Сохранить" Click="Button_Click_Save"></Button>
+    </Grid>
+</Page>

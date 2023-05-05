@@ -1,0 +1,40 @@
+﻿<Page x:Class="Library.PageBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Library"
+      mc:Ignorable="d"
+      Title="PageBook" Width="1400" Height="498" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Background="AliceBlue" Margin="0,0,-40,0">
+
+ 
+        <DataGrid x:Name="DGridBook" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,70,0,11">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№ публикации" Binding="{Binding ID_Publication}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название публикации" Binding="{Binding Name_Publication}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Автор" Binding="{Binding Authors.Au_Surname}" Width="90"></DataGridTextColumn>
+                <DataGridTextColumn Header="Жанр" Binding="{Binding Сategory}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Издательство" Binding="{Binding Publisher.Name_Publisher}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата печати" Binding="{Binding Date_Release}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тираж" Binding="{Binding Circulation}" Width="90"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код ISBN" Binding="{Binding ISBN}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код УДС" Binding="{Binding UDC}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Место хранения" Binding="{Binding Location}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата поступления" Binding="{Binding Date_Delivery}" Width="120"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Редактирование" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактирование" Width="100" Click="Button_Click_Edit"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавление"  HorizontalAlignment="Left" Height="30" Margin="30,20,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click_Add"/>
+        <Button Content="Удаление" HorizontalAlignment="Left" Height="30" Margin="1270,20,0,30" VerticalAlignment="Top" Width="140"/>
+
+
+    </Grid>
+</Page>

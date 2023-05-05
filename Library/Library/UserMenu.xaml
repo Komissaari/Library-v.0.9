@@ -1,0 +1,17 @@
+﻿<Window x:Class="Library.UserMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="UserMenu" Height="450" Width="800">
+    <Grid Margin="0,0,-11,-6">
+        <ComboBox Name="ComboBoxBooks" HorizontalAlignment="Left" Margin="158,32,0,0" VerticalAlignment="Top" Width="156" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,38,0,0" TextWrapping="Wrap" Text="Выбор книги" VerticalAlignment="Top"/>
+        <Button Content="Взять книгу" HorizontalAlignment="Left" Margin="56,103,0,0" VerticalAlignment="Top" Height="22" Width="91" Click="Button_Click"/>
+        <ListBox Name="Vzitie" Margin="565,42,0,153" HorizontalAlignment="Left" Width="212"/>
+        <TextBlock HorizontalAlignment="Left" Margin="578,21,0,0" TextWrapping="Wrap" Text="Книги взятые" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

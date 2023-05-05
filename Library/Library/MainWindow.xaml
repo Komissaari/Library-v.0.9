@@ -1,0 +1,18 @@
+﻿<Window x:Class="Library.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1400">
+    <Grid>
+        <TextBlock Text="Авторизация" FontSize="48" HorizontalAlignment="Left" Width="300" Margin="560,39,0,657"/>
+        <TextBlock Text="Логин" FontSize="20" Margin="300,168,900,588"/>
+        <TextBox x:Name="TB_Login" Height="40" Width="500" Margin="300,220,600,524"></TextBox>
+        <TextBlock Text="Пароль" FontSize="20" Margin="300,282,996,474"/>
+        <PasswordBox  x:Name="TB_Pass" Height="40" Width="500" Margin="300,315,600,429" PasswordChar="*"></PasswordBox>
+        <Button Height="50" Width="200" Content="Авторизоваться" FontSize="24" Margin="300,367,900,367" Click="Button_Click_Autorization"></Button>
+        <Button Height="50" Width="200" Content="Регистрация" FontSize="24" Margin="600,367,600,367"></Button>
+    </Grid>
+</Window>
